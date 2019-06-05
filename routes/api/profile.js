@@ -151,7 +151,7 @@ router.get('/user/:user_id', async (req, res) => {
 		res.json(profile);
 	} catch (err) {
 		console.error(err.essage);
-		if (err.kind == 'ObjectId') {
+		if (err.kind === 'ObjectId') {
 			return res.status(400).json({ msg: 'Profile not found' });
 		}
 		res.status(500).send('Server error');
@@ -364,7 +364,7 @@ router.get('/github/:username', (req, res) => {
 		request(options, (error, response, body) => {
 			if (error) console.error(error);
 
-			if (response.statusCode != 200) {
+			if (response.statusCode !== 200) {
 				return res.status(404).json({ msg: 'No GitHub profile found' });
 			}
 
